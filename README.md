@@ -1,9 +1,9 @@
-# HippMapp3r
+# HyperMapp3r
 
-*HippMapp3r* (pronounced hippmapper) is a CNN-based segmentation algorithm of the whole hippocampus
+*HypeMapp3r* (pronounced hypermapper) is a CNN-based segmentation algorithm of White Matter Hyperintensity (WMH)segmentation
 using MRI images from BrainLab.
-It can deal with brains with extensive atrophy and segments the hippocampi in seconds.
-It uses a T1-weighted image as the only input and segments both with-skull and skull-stripped images.
+It can deal with brains with extensive atrophy and segments the wmh in seconds.
+It uses a T1-weighted, FL-weighted, and brain mask(if it exist) images as the inputs and segments.
 
 <p align="center">
       <img src="docs/images/graph_abstract.png" alt="hippocampus pop-up window"
@@ -13,6 +13,6 @@ It uses a T1-weighted image as the only input and segments both with-skull and s
 
 ____________________________
 
-For more details, see our [docs](https://hippmapp3r.readthedocs.io).
+For more details, see our [docs](https://hypermapp3r.readthedocs.io).
 
 Copyright (C) 2019 BrainLab.
