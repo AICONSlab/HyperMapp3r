@@ -2,17 +2,17 @@ from setuptools import setup, find_packages
 from hippmapper import __version__
 
 setup(
-    name='HippMapp3r',
+    name='HyperMapp3r',
     version=__version__,
     description='A CNN-based segmentation technique using MRI images from BrainLab',
-    author=['Maged Goubran', 'Hassan Akhavein', 'Edward Ntiri'],
+    author=['Maged Goubran', 'Parisa Mojiri', 'Edward Ntiri'],
     author_email='maged.goubran@sri.utoronto.ca',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     license='GNU GENERAL PUBLIC LICENSE v3',
-    url='https://github.com/mgoubran/HippMapp3r',  # change later
-    download_url='https://github.com/mgoubran/HippMapp3r',
+    url='https://github.com/mgoubran/HyperMapp3r',  # change later
+    download_url='https://github.com/mgoubran/HyperMapp3r',
     long_description=open('README.md').read(),
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
@@ -35,15 +35,14 @@ setup(
     dependency_links=[
         'git+https://github.com/keras-team/keras-contrib.git'
     ],
-    install_requires=[
-        'nibabel', 'nipype', 'argparse', 'argcomplete', 'joblib', 'keras', 'nilearn', 'scikit-learn',
-        'keras-contrib', 'pandas', 'numpy', 'plotly', 'PyQt5'
+    install_requires=['nibabel', 'nipype', 'argparse', 'argcomplete', 'joblib', 'keras==2.1.2', 'nilearn', 'scikit-learn',
+        'keras-contrib', 'pandas', 'numpy', 'plotly', 'PyQt5', 'termcolor'
     ],
     extras_require={
-        "hippmapper": ["tensorflow==2.0.0"],
-        "hippmapper_gpu": ["tensorflow-gpu==2.0.0"],
+        "hypermapper": ["tensorflow==1.13.1"],
+        "hypermapper_gpu": ["tensorflow-gpu==1.13.1"],
     },
-    entry_points={'console_scripts': ['hippmapper=hippmapper.cli:main']},
+    entry_points={'console_scripts': ['hypermapper=hypermapper.cli:main']},
     keywords=[
         'neuroscience dementia lesion stroke white-matter-hyperintensity brain-atlas mri neuroimaging',
         'medical-imaging biomedical image-processing image-registration image-segmentation',
