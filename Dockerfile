@@ -5,7 +5,12 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get install -y git wget build-essential g++ gcc cmake curl clang && \
     apt-get install -y libfreetype6-dev apt-utils pkg-config vim gfortran && \
     apt-get install -y binutils make linux-source unzip && \
-    apt install -y libsm6 libxext6 libfontconfig1 libxrender1 libgl1-mesa-glx
+    apt install -y libsm6 libxext6 libfontconfig1 libxrender1 libgl1-mesa-glx && \
+    apt-get install -y python3-pip python3-dev && \
+    cd /usr/local/bin/ && \
+    ln -s /usr/bin/python3 python && \
+    pip3 install --upgrade pip && \
+    cd ~
 
 # Install c3d
 RUN wget https://downloads.sourceforge.net/project/c3d/c3d/Nightly/c3d-nightly-Linux-x86_64.tar.gz && \
@@ -30,7 +35,7 @@ ENV FSLDIR="/usr/share/fsl/5.0" \
     FSLWISH="/usr/bin/wish" \
     POSSUMDIR="/usr/share/fsl/5.0"
 
-ENV PATH="/usr/lib/fsl/5.0":${PATH}
+ENV PATH="/usr/lib/fsl/5.0:${PATH}"
 
 # Install ANTs
 ENV ANTSPATH /opt/ANTs
@@ -39,29 +44,51 @@ RUN mkdir -p /opt/ANTs && \
     | tar -xzC $ANTSPATH --strip-components 1
 ENV PATH=${ANTSPATH}:${PATH}
 
-# Install miniconda
-RUN curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-    bash Miniconda3-latest-Linux-x86_64.sh -p /opt/miniconda -b && \
-    rm Miniconda3-latest-Linux-x86_64.sh
-ENV PATH=/opt/miniconda/bin:${PATH}
-
 # Install all needed packages based on pip installation
-RUN git clone https://github.com/mgoubran/HippMapp3r.git && \
-    cd HippMapp3r && \
-    pip install git+https://www.github.com/keras-team/keras-contrib.git && \
-    pip install -e .[hippmapper] && \
-    pip install pyqt5==5.14
+COPY requirements.txt ./
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
+COPY . .
 
 # Download models, store in directory
-RUN mkdir /HippMapp3r/models && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ftE79HF-sWXGa_X2bOUc-ldyWQEB5-Dz' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ftE79HF-sWXGa_X2bOUc-ldyWQEB5-Dz" -O /HippMapp3r/models/hipp_model.json && \
+RUN mkdir -p /src/icvmapp3r/models && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Ulx07FlY7Zw5ragIMjQFIYYytGaJPvPq' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1Ulx07FlY7Zw5ragIMjQFIYYytGaJPvPq" -O /src/icvmapp3r/models/hfb_multi_mcdp_model_weights.h5 && \
     rm -rf /tmp/cookies.txt && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=19zEi7552X93_5JbEokfry2Y28gFeVGt2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=19zEi7552X93_5JbEokfry2Y28gFeVGt2" -O /HippMapp3r/models/hipp_model_weights.h5 && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=19zEi7552X93_5JbEokfry2Y28gFeVGt2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=19zEi7552X93_5JbEokfry2Y28gFeVGt2" -O /src/icvmapp3r/models/hfb_multi_mcdp_model.json && \
     rm -rf /tmp/cookies.txt && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1rwCrZBkzF_OgeqnaX-bN46DJoLqH61qU' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1rwCrZBkzF_OgeqnaX-bN46DJoLqH61qU" -O /HippMapp3r/models/hipp_zoom_mcdp_model.json && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1AZSAHty7caxVps7lJ8m0KWeUStwQrdvA' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1AZSAHty7caxVps7lJ8m0KWeUStwQrdvA" -O /src/icvmapp3r/models/hfb_multi_model_weights.h5 && \
     rm -rf /tmp/cookies.txt && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1T255vBdvxhPyuVQ6rq3Ev_0VkZ8kzwrf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1T255vBdvxhPyuVQ6rq3Ev_0VkZ8kzwrf" -O /HippMapp3r/models/hipp_zoom_mcdp_model_weights.h5 && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1_AhrxCC7kQKQPw6AlIIbp-NLwIrMTYgs' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1_AhrxCC7kQKQPw6AlIIbp-NLwIrMTYgs" -O /src/icvmapp3r/models/hfb_multi_model.json && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ZQN2zn2o1DSVLhsMbUIzAtwoUu9IhqB8' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ZQN2zn2o1DSVLhsMbUIzAtwoUu9IhqB8" -O /src/icvmapp3r/models/hfb_t1only_mcdp_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1LppC8pEWSgByKF683hd7F5e8Gv8CuK6m' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1LppC8pEWSgByKF683hd7F5e8Gv8CuK6m" -O /src/icvmapp3r/models/hfb_t1only_mcdp_model.json && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1AEoo8kuDCLQYDkfpwE2qYzDsIZYlxaVV' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1AEoo8kuDCLQYDkfpwE2qYzDsIZYlxaVV" -O /src/icvmapp3r/models/hfb_t1only_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1BXmYdr4U-SQYZIChPesDfFYzuTXg63kn' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1BXmYdr4U-SQYZIChPesDfFYzuTXg63kn" -O /src/icvmapp3r/models/hfb_t1only_model.json && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1W2WdayviLfFf9iTbw-LhoaduPeOseVj0' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1W2WdayviLfFf9iTbw-LhoaduPeOseVj0" -O /src/icvmapp3r/models/hfb_t1t2_mcdp_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1esnItqZ2UdfamMy2ZXOMEIL-F25sz8sp' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1esnItqZ2UdfamMy2ZXOMEIL-F25sz8sp" -O /src/icvmapp3r/models/hfb_t1t2_mcdp_model.json && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1RDzWto5236l158K6nAaEpd8wtP93i9bU' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1RDzWto5236l158K6nAaEpd8wtP93i9bU" -O /src/icvmapp3r/models/hfb_t1t2_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1BY9Iql0soAvv7MFRPQEW8G-CSn00VojA' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1BY9Iql0soAvv7MFRPQEW8G-CSn00VojA" -O /src/icvmapp3r/models/hfb_t1t2_model.json && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1JOYGCa97qnibSMnfQuRNvbHhy6xBTqPl' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1JOYGCa97qnibSMnfQuRNvbHhy6xBTqPl" -O /src/icvmapp3r/models/hfb_t1fl_mcdp_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1TaJaLp_BysEX0LkgQ07MAcLQzSwHRgRW' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1TaJaLp_BysEX0LkgQ07MAcLQzSwHRgRW" -O /src/icvmapp3r/models/hfb_t1fl_mcdp_model.json && \
     rm -rf /tmp/cookies.txt
 
-# Run hippmapper when the container launches
-ENTRYPOINT ["/opt/miniconda/bin/hippmapper"]
+RUN mkdir -p /src/hypermapp3r/models && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16PMIZKPk5-sFpm8iHiKTDo32vi_eFAb-' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16PMIZKPk5-sFpm8iHiKTDo32vi_eFAb-" -O /src/hypermapp3r/models/wmh_mcdp_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_" -O /src/hypermapp3r/models/wmh_mcdp_multi_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO" -O /src/hypermapp3r/models/wmh_wmh_multi_model.json && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1XvtX_pdMKeQs0TkK37ny4lj1rPWFkat_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1XvtX_pdMKeQs0TkK37ny4lj1rPWFkat_" -O /src/hypermapp3r/models/wmh_mcdp_org_model.json && \
+    rm -rf /tmp/cookies.txt
+
+# Run icvmapper when the container launches
+ENTRYPOINT /bin/bash

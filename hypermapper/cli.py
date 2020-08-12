@@ -63,8 +63,8 @@ def get_parser():
 
     # seg hyperocampus (hyper)
     hyper_parser = hypermapper.parsefn()
-    parser_seg_hyper = subparsers.add_parser('seg_hyper', add_help=False, parents=[hyper_parser],
-                                            help="Segment hyperocampus using a trained CNN",
+    parser_seg_hyper = subparsers.add_parser('seg_wmh', add_help=False, parents=[hyper_parser],
+                                            help="Segment white matter hyperintensities using a trained CNN",
                                             usage=hyper_parser.usage)
     parser_seg_hyper.set_defaults(func=run_hypermapper)
 
@@ -99,8 +99,8 @@ def get_parser():
 
     # hyper vol seg
     hp_vol_parser = summary_hp_vols.parsefn()
-    parser_stats_hp = subparsers.add_parser('stats_hp', add_help=False, parents=[hp_vol_parser],
-                                            help="Generates volumetric summary of hyperocampus segmentations",
+    parser_stats_hp = subparsers.add_parser('stats_wmh', add_help=False, parents=[hp_vol_parser],
+                                            help="Generates volumetric summary of white matter hyperintensity segmentations",
                                             usage=hp_vol_parser.usage)
     parser_stats_hp.set_defaults(func=run_hp_seg_summary)
 

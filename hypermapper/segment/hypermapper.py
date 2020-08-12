@@ -11,9 +11,9 @@ import argparse
 import numpy as np
 import nibabel as nib
 from nilearn.image import reorder_img, resample_img, resample_to_img, math_img, smooth_img
-from hypermatter.deep.predict import run_test_case
-from hypermatter.qc import seg_qc
-from hypermatter.utils import endstatement
+from hypermapper.deep.predict import run_test_case
+from hypermapper.qc import seg_qc
+from hypermapper.utils import endstatement
 from nipype.interfaces.c3 import C3d
 from termcolor import colored
 import subprocess
