@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from hippmapper import __version__
+from hypermapper import __version__
 
 setup(
     name='HyperMapp3r',
