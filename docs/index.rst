@@ -29,3 +29,10 @@ Copyright (C) 2020 BrainLab.
    wmh_seg
    issues
    docker
+
+Indices and tables
+====================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
