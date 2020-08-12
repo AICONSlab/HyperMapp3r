@@ -80,8 +80,8 @@ nested_dict = {
             0: {
                 'name': 'WMH',
                 'script': 'seg_wmh',
-                'opts': '-t seg_wmh -v t1w -f out',
-                'helpmsg': 'Segments white matter hyperintensity (WMH) using a trained CNN'
+                'opts': '-t seg_wmh -v t1w flair mask -f thresh num_mc out -c force rmcereb bias',
+                'helpmsg': 'Segments wmh using a trained CNN'
             },
         }
     },
@@ -100,10 +100,10 @@ nested_dict = {
     'Statistics': {
         'functions': {
             0: {
-                'name': 'WMH Volume Summary',
+                'name': 'Intracranial Vault Volume Summary',
                 'script': 'stats_wmh',
-                'opts': '-t stats_hp -v in_dir -f out_csv',
-                'helpmsg': 'Generates volumetric summary of white matter hyperintensity segmentations'
+                'opts': '-t stats_wmh -v in_dir -f out_csv',
+                'helpmsg': 'Generates volumetric summary of wmh segmentations'
             },
         }
     },
