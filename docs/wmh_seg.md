@@ -12,7 +12,7 @@ Or follow the steps below:
 
 After opening the HyperMapper GUI, click "WMH" under the "Segmentation" tab. Wait for a new pop-up window to appear. The window should look like the image below.
 
-![](images/hypermapper_seg_wmh_popup.PNG)
+![](images/hypermapper_seg_wmh_popup.png)
 
 Click "Select t1w" and chose your T1 image. Click "Run".
 Type your desired output name in the "out" box.
