@@ -23,13 +23,18 @@ Your output file will automatically appear in your t1w folder.
 
     hippmapper seg_wmh
     
-    Optional arguments:
-    -s , --subj       input subject
-    -t1 , --t1w       input T1-weighted
-    -b, --bias        bias field correct image before segmentation
-    -o , --out        output prediction
-    -f, --force       overwrite existing segmentation
-    -ss , --session   input session for longitudinal studies
+    optional arguments:
+    -h, --help            show this help message and exit
+    -s , --subj           input subject
+    -fl dir, --flair dir  input Flair
+    -t1 , --t1w           input T1-weighted
+    -t2 , --t2w           input T2-weighted
+    -m , --mask           brain mask
+    -o , --out            output prediction
+    -ign_ort, --ign_ort   ignore orientation if tag is wrong
+    -n , --num_mc         number of Monte Carlo Dropout samples
+    -th , --thresh        threshold
+    -f, --force           overwrite existing segmentation
     
     Examples:
     hypermapper seg_wmh -s subjectname -b
