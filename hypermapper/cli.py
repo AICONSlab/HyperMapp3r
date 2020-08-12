@@ -15,7 +15,7 @@ from hypermapper.segment import hypermapper
 from hypermapper.convert import filetype
 from hypermapper.preprocess import biascorr, trim_like
 from hypermapper.qc import seg_qc
-from hypermapper.stats import summary_hp_vols
+from hypermapper.stats import summary_wmh_vols
 from hypermapper.utils.path_manager import add_paths
 
 warnings.simplefilter("ignore")
