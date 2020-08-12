@@ -44,7 +44,7 @@ They can also be created through the GUI or command line:
 
 The QC image should look like this:
 
-![](images/wmh_seg_corr.png)
+![](images/wmh_seg_qc.png)
 
 
 ## Logs
