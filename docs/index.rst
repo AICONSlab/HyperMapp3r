@@ -9,7 +9,7 @@ Welcome to HyperMapp3r's documentation!
 *HyperMapp3r* (pronounced hypermapper) is a CNN-based segmentation algorithm of White Matter Hyperintensity(WMH) segmentation
 using MRI images from BrainLab.
 It can deal with brains with extensive atrophy and segments the wmh in seconds.
-It uses a T1-weighted, FL-weighted, and brain mask(if it exist) images as the inputs and segments.
+It uses a T1-weighted, FLAIR, and brain mask images as the inputs and segments.
 
 Copyright (C) 2020 BrainLab.
 
