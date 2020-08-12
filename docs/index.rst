@@ -1,22 +1,22 @@
-.. HippMapp3r documentation master file, created by
+.. HyperMapp3r documentation master file, created by
    sphinx-quickstart on Fri Dec 14 15:34:18 2018.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to HippMapp3r's documentation!
+Welcome to HyperMapp3r's documentation!
 ==================================
 
-.. image:: images/hippmapper_icon.png
+.. image:: images/hypermapper_icon.png
     :width: 550px
     :alt: Graph abstract
     :align: center
 
-*HippMapp3r* (pronounced hippmapper) is a CNN-based segmentation technique of the whole hippocampus
+*HyperMapp3r* (pronounced hypermapper) is a CNN-based segmentation algorithm of White Matter Hyperintensity(WMH) segmentation
 using MRI images from BrainLab.
-It can deal with brains with extensive atrophy and segments the hippocampi in seconds.
-It uses a T1-weighted image as the only input and segments both with-skull and skull-stripped images.
+It can deal with brains with extensive atrophy and segments the wmh in seconds.
+It uses a T1-weighted, FL-weighted, and brain mask(if it exist) images as the inputs and segments.
 
-Copyright (C) 2019 BrainLab.
+Copyright (C) 2020 BrainLab.
 
 .. image:: images/graph_abstract.png
     :width: 550px
@@ -35,4 +35,10 @@ Copyright (C) 2019 BrainLab.
    issues
    docker
 
+Indices and tables
+====================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
