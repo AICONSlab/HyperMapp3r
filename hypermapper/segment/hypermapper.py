@@ -31,7 +31,7 @@ def parsefn():
     optional = parser.add_argument_group('optional arguments')
 
     optional.add_argument('-s', '--subj', type=str, metavar='', help="input subject")
-    optional.add_argument('-fl', '--flair', type=str, metavar='dir', help="input Flair")
+    optional.add_argument('-fl', '--flair', type=str, metavar='', help="input Flair")
     optional.add_argument('-t1', '--t1w', type=str, metavar='', help="input T1-weighted", )
     optional.add_argument('-t2', '--t2w', type=str, metavar='', help="input T2-weighted")
     optional.add_argument('-m', '--mask', type=str, metavar='', help="brain mask")

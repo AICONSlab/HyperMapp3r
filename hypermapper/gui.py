@@ -80,7 +80,7 @@ nested_dict = {
             0: {
                 'name': 'WMH',
                 'script': 'seg_wmh',
-                'opts': '-t seg_wmh -v t1w flair mask -f thresh num_mc out -c force rmcereb bias',
+                'opts': '-t seg_wmh -v t1w flair mask -f thresh num_mc out force bias',
                 'helpmsg': 'Segments wmh using a trained CNN'
             },
         }
