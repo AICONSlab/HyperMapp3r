@@ -26,6 +26,6 @@ Copyright (C) 2020 BrainLab.
    before_install
    install
    beginner
-   hipp_seg
+   wmh_seg
    issues
    docker
