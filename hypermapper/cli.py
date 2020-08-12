@@ -34,7 +34,7 @@ def run_filetype(args):
 
 
 def run_hypermapper(args):
-    hippmapper.main(args)
+    hypermapper.main(args)
 
 
 def run_wmh_seg_summary(args):
