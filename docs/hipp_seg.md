@@ -10,9 +10,9 @@ Watch this video tutorial:
 
 Or follow the steps below:
 
-After opening the HippMapper GUI, click "Hippocampus" under the "Segmentation" tab. Wait for a new pop-up window to appear. The window should look like the image below.
+After opening the HyperMapper GUI, click "WMH" under the "Segmentation" tab. Wait for a new pop-up window to appear. The window should look like the image below.
 
-![](images/hipp_1.PNG)
+![](images/wmh_1.PNG)
 
 Click "Select t1w" and chose your T1 image. Click "Run".
 Type your desired output name in the "out" box.
@@ -21,7 +21,7 @@ Your output file will automatically appear in your t1w folder.
 
 ## Command Line
 
-    hippmapper seg_hipp
+    hippmapper seg_wmh
     
     Optional arguments:
     -s , --subj       input subject
@@ -32,8 +32,8 @@ Your output file will automatically appear in your t1w folder.
     -ss , --session   input session for longitudinal studies
     
     Examples:
-    hippmapper seg_hipp -s subjectname -b
-    hippmapper seg_hipp -t1 subject_T1_nu.nii.gz -o subject_hipp.nii.gz
+    hypermapper seg_wmh -s subjectname -b
+    hypermapper seg_wmh -t1 subject_T1_nu.nii.gz fl subject_T1acq_nu_FL.nii.gz -m subject_T1acq_nu_HfB.nii.gz -o subject_wmh_pred.nii.gz
 
 The output should look like this.:
 
