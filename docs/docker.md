@@ -28,7 +28,7 @@ Verify that the image was pulled successfully by checking all images on your sys
 
 ## Running the Docker image
 
-If you have installed Docker for the first time. and have verified that the `hello-world` image was running, then HippMapper can be run on your syste.
+If you have installed Docker for the first time and have verified that the `hello-world` image was running, then HyperMapper can be run on your syste.
 
 The simplest way to run the container is:
 
