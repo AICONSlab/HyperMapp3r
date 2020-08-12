@@ -40,7 +40,7 @@ jobs:
           command: |
 
              echo "Runing tests:"
-             docker run --entrypoint bash -it mgoubran/hyperpmapper -c "hypermapper seg_wmh -t1 /HyperMapp3r/data/test_case/mprage.nii.gz"
+             docker run --entrypoint bash -it mgoubran/hyperpmapper -c "hypermapper seg_wmh -t1 /HyperMapp3r/data/test_case/t1.nii.gz -fl /HyperMapp3r/data/test_case/fl.nii.gz -m /HyperMapp3r/data/test_case/mask.nii.gz"
 
       - store_test_results:
           path: /home/circleci/out/tests
