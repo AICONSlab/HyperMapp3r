@@ -17,18 +17,18 @@ Copyright (C) 2020 BrainLab.
     :width: 550px
     :alt: Graph abstract
     :align: center
-
+    
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   :hidden:
 
    before_install
    install
    beginner
-   wmh_seg
+   icv_seg
    issues
    docker
+
 
 Indices and tables
 ====================
