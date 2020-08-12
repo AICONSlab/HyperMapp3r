@@ -15,7 +15,7 @@ Once Docker is installed, open the docker terminal and test it with the command
     docker run hello-world
 
 
-## Pulling HyperMapp3r's Docker immge
+## Pulling HyperMapp3r's Docker image
 
 While you can download various Docker images, for the sake of this tutorial pull the HyperMpp3r image
 
