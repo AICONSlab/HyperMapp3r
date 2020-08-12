@@ -15,11 +15,11 @@ Once Docker is installed, open the docker terminal and test it with the command
     docker run hello-world
 
 
-## Pulling HippMapp3r's Docker immge
+## Pulling HyperMapp3r's Docker immge
 
-While you can download various Docker images, for the sake of this tutorial pull the HippMpp3r image
+While you can download various Docker images, for the sake of this tutorial pull the HyperMpp3r image
 
-    docker pull mgoubran/hippmapper:latest
+    docker pull mgoubran/hypermapper:latest
 
 Verify that the image was pulled successfully by checking all images on your system
 
@@ -32,15 +32,15 @@ If you have installed Docker for the first time. and have verified that the `hel
 
 The simplest way to run the container is:
 
-    docker run -it mgoubran/hippmapper seg_hipp -t1 /hippMapp3r/data/test_case/mprage.nii.gz
+    docker run -it mgoubran/hypermapper seg_wmh -t1 /hypermapper/data/test_case/t1.nii.gz -fl /hypermapper/data/test_case/fl.nii.gz -m /hypermapper/data/test_case/mask.nii.gz
 
 To run the Docker container in an interactive shell, run
 
-    docker run --rm -v {enter/path/here}:/root -it --entrypoint /bin/bash mgoubran/hippmapper
+    docker run --rm -v {enter/path/here}:/root -it --entrypoint /bin/bash mgoubran/hypermapper
 
 
 
-## Using hippMapper on Singularity
+## Using HyperMapper on Singularity
 
 Docker images can still be used on Singularity. This is especially good if you are processing images using Compute Canada clusters. The following instructions are based on the steps provided on the [Compute Canada wiki](https://docs.computecanada.ca/wiki/Singularity).
 
@@ -48,12 +48,12 @@ Load the specific Singularity module you would like to use.
 
     module load singularity/3.5
 
-Although HippMapper is stored as a Docker image, it can be built in singularity by calling:
+Although hypermapper is stored as a Docker image, it can be built in singularity by calling:
 
-    singularity build hippmapper.sif docker://mgoubran/hippmapper
+    singularity build hypermapper.sif docker://mgoubran/hypermapper
 
 To ensure that the Docker image has been built in Singularity, run
 
-    singularity exec hippmapper.sif hippmapper --help
+    singularity exec hypermapper.sif hypermapper --help
 
 
