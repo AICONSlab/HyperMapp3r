@@ -40,8 +40,8 @@ jobs:
           command: |
 
              echo "Running tests:"
-             docker run --entrypoint bash -it mgoubran/hypermapper -c "icvmapper seg_icv -t1 /src/hypermapp3r/data/test_case/mprage.nii.gz -o /src/hypermapp3r/data/test_case/mprage_hfb.nii.gz -n 5"
-             docker run --entrypoint bash -it mgoubran/hypermapper -c "hypermapper seg_wmh -t1 /src/hypermapp3r/data/test_case/mprage.nii.gz -fl /src/hypermapp3r/data/test_case/mprage_hfb_mask.nii.gz -n 5"
+             docker run --entrypoint bash -it mgoubran/hypermapper -c "icvmapper seg_icv -t1 /src/hypermapp3r/data/test_case/mprage.nii.gz -o /src/hypermapp3r/data/test_case/mprage_hfb.nii.gz -n 1"
+             docker run --entrypoint bash -it mgoubran/hypermapper -c "hypermapper seg_wmh -t1 /src/hypermapp3r/data/test_case/mprage.nii.gz -fl /src/hypermapp3r/data/test_case/mprage.nii.gz -m /src/hypermapp3r/data/test_case/mprage_hfb_mask.nii.gz -n 1"
 
       - store_test_results:
           path: /home/circleci/out/tests
