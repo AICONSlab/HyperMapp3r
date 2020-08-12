@@ -2,7 +2,7 @@
 
 If you intend to use Singularity, scroll down to the Singularity section. Otherwise, the steps to use the image in Docker can be found below.
 
-## Before using Docker image for HippMapp3r
+## Before using Docker image for HyperMapp3r
 
 If you want to use Docker to run JippMapp3r, you must first install Docker on your system. While the installation method differs per system, instructions can be found for the following:
 
