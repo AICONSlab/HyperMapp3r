@@ -13,7 +13,7 @@ It uses a T1-weighted, FL-weighted, and brain mask(if it exist) images as the in
 
 Copyright (C) 2020 BrainLab.
 
-.. image:: images/graph_abstract.png
+.. image:: images/graph_abstract_wmh.png
     :width: 550px
     :alt: Graph abstract
     :align: center
