@@ -13,16 +13,16 @@ If either ANTs or c3d are not installed on your machine, run `install_depends.sh
 
 1. Clone repository
 
-        git clone https://github.com/mgoubran/HippMapp3r.git HippMapp3r
+        git clone https://github.com/mgoubran/HyperMapp3r.git HyperMapp3r
 
         (or install zip file and uncompress)
 
-        cd HippMapp3r
+        cd HyperMapp3r
 
-    If you want to create a virtual environment where HippMapp3r can be run,
+    If you want to create a virtual environment where HyperMapp3r can be run,
 
-        conda create -n hippmapper python=3.6 anaconda
-        source activate hippmapper
+        conda create -n hypermapper python=3.6 anaconda
+        source activate hypermapper
     
     To end the session, deactivate the environment
     
@@ -30,7 +30,7 @@ If either ANTs or c3d are not installed on your machine, run `install_depends.sh
     
     To delete the environment,
     
-        conda env remove --name hippmapper
+        conda env remove --name hypermapper
 
 2. Install dependencies
     
@@ -38,32 +38,32 @@ If either ANTs or c3d are not installed on your machine, run `install_depends.sh
     
     If the computer you are using has a GPU:
         
-        pip install -e .[hippmapper_gpu]
+        pip install -e .[hypermapper_gpu]
 
     If not:
     
-        pip install -e .[hippmapper]
+        pip install -e .[hypermapper]
 
 3. Test the installation by running
 
-        hippmapper --help
+        hypermapper --help
         
    To confirm that the command line function works, and
    
-        hippmapper
+        hypermapper
         
    To launch the interactive GUI.
 
 ## Download deep models
 
-Download the models from [this link](https://drive.google.com/open?id=10aVCDurd_mcB49mJfwm658IZg33u0pd2) and place them in the `models` directory
+Download the models from [this link](https://drive.google.com/drive/folders/1QS3t01jMSJq6zAfjMDu1AzufplGjLODR) and place them in the `models` directory
 
 ## For tab completion
     pip3 install argcomplete
     activate-global-python-argcomplete
 
-## Updating HippMapp3r
-To update HippMapp3r, navigate to the directory where HippMapp3r was cloned and run
+## Updating HyperMapp3r
+To update HyperMapp3r, navigate to the directory where HyperMapp3r was cloned and run
 
     git pull
     pip install -e .[{option}] -process-dependency-links
