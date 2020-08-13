@@ -397,7 +397,7 @@ def main(args):
 
         print(colored("\n generating mosaic image for qc", 'green'))
         # seg_qc.main(['-i', '%s' % fl, '-s', '%s' % prediction, '-g', '5', "-m", "75"])
-        seg_qc.main(['-i', '%s' % fl_new, '-s', '%s' % prediction])
+        seg_qc.main(['-i', '%s' % fl, '-s', '%s' % prediction])
 
         endstatement.main('WMH prediction', '%s' % (datetime.now() - start_time))
 
