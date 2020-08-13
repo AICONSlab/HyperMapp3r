@@ -27,7 +27,7 @@ gast==0.2.0
 grpcio==1.15.0
 h5py==2.8.0
 html5lib==0.9999999
--e git+https://github.com/mgoubran/HyperMapp3r.git@testing#egg=HyperMapp3r
+-e git+https://github.com/mgoubran/HyperMapp3r.git#egg=HyperMapp3r
 idna==2.8
 importlib-metadata==0.8
 ipykernel==4.8.2
