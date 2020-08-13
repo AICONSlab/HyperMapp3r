@@ -4,19 +4,22 @@
 
 import os
 import sys
+import glob
 from datetime import datetime
 from pathlib import Path
 import argcomplete
 import argparse
 import numpy as np
 import nibabel as nib
-from nilearn.image import reorder_img, resample_img, resample_to_img, math_img, smooth_img
+import subprocess
+from nilearn.image import reorder_img, resample_img, resample_to_img, math_img
 from hypermapper.deep.predict import run_test_case
-from hypermapper.qc import seg_qc
 from hypermapper.utils import endstatement
+from hypermapper.preprocess import biascorr, trim_like
+from hypermapper.qc import seg_qc
+from nipype.interfaces.fsl import maths
 from nipype.interfaces.c3 import C3d
 from termcolor import colored
-import subprocess
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = "3"
 
@@ -28,7 +31,7 @@ def parsefn():
     optional = parser.add_argument_group('optional arguments')
 
     optional.add_argument('-s', '--subj', type=str, metavar='', help="input subject")
-    optional.add_argument('-fl', '--flair', type=str, metavar='dir', help="input Flair")
+    optional.add_argument('-fl', '--flair', type=str, metavar='', help="input Flair")
     optional.add_argument('-t1', '--t1w', type=str, metavar='', help="input T1-weighted", )
     optional.add_argument('-t2', '--t2w', type=str, metavar='', help="input T2-weighted")
     optional.add_argument('-m', '--mask', type=str, metavar='', help="brain mask")
@@ -394,7 +397,7 @@ def main(args):
 
         print(colored("\n generating mosaic image for qc", 'green'))
         # seg_qc.main(['-i', '%s' % fl, '-s', '%s' % prediction, '-g', '5', "-m", "75"])
-        seg_qc.main(['-i', '%s' % fl_new, '-s', '%s' % prediction])
+        seg_qc.main(['-i', '%s' % fl, '-s', '%s' % prediction])
 
         endstatement.main('WMH prediction', '%s' % (datetime.now() - start_time))
 

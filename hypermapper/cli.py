@@ -15,7 +15,7 @@ from hypermapper.segment import hypermapper
 from hypermapper.convert import filetype
 from hypermapper.preprocess import biascorr, trim_like
 from hypermapper.qc import seg_qc
-from hypermapper.stats import summary_hp_vols
+from hypermapper.stats import summary_wmh_vols
 from hypermapper.utils.path_manager import add_paths
 
 warnings.simplefilter("ignore")
@@ -37,8 +37,8 @@ def run_hypermapper(args):
     hypermapper.main(args)
 
 
-def run_hp_seg_summary(args):
-    summary_hp_vols.main(args)
+def run_wmh_seg_summary(args):
+    summary_wmh_vols.main(args)
 
 
 def run_seg_qc(args):
@@ -61,10 +61,10 @@ def get_parser():
     subparsers = parser.add_subparsers()
     # --------------
 
-    # seg hyperocampus (hyper)
+    # seg white matter hyperintensity (WMH)
     hyper_parser = hypermapper.parsefn()
     parser_seg_hyper = subparsers.add_parser('seg_wmh', add_help=False, parents=[hyper_parser],
-                                            help="Segment white matter hyperintensities using a trained CNN",
+                                            help="Segment white matter hyperintensity (WMH) using a trained CNN",
                                             usage=hyper_parser.usage)
     parser_seg_hyper.set_defaults(func=run_hypermapper)
 
@@ -97,12 +97,12 @@ def get_parser():
 
     # --------------
 
-    # hyper vol seg
-    hp_vol_parser = summary_hp_vols.parsefn()
-    parser_stats_hp = subparsers.add_parser('stats_wmh', add_help=False, parents=[hp_vol_parser],
-                                            help="Generates volumetric summary of white matter hyperintensity segmentations",
-                                            usage=hp_vol_parser.usage)
-    parser_stats_hp.set_defaults(func=run_hp_seg_summary)
+    # wmh vol seg
+    wmh_vol_parser = summary_wmh_vols.parsefn()
+    parser_stats_wmh = subparsers.add_parser('stats_wmh', add_help=False, parents=[wmh_vol_parser],
+                                            help="Generates volumetric summary of WMH segmentations",
+                                            usage=wmh_vol_parser.usage)
+    parser_stats_wmh.set_defaults(func=run_wmh_seg_summary)
 
     # --------------
 

@@ -78,10 +78,10 @@ nested_dict = {
     'Segmentation': {
         'functions': {
             0: {
-                'name': 'hyperocampus',
-                'script': 'seg_hyper',
-                'opts': '-t seg_hyper -v t1w -f out',
-                'helpmsg': 'Segments hyperocampus using a trained CNN'
+                'name': 'WMH',
+                'script': 'seg_wmh',
+                'opts': '-t seg_wmh -v t1w flair mask -f thresh num_mc out force bias',
+                'helpmsg': 'Segments wmh using a trained CNN'
             },
         }
     },
@@ -100,10 +100,10 @@ nested_dict = {
     'Statistics': {
         'functions': {
             0: {
-                'name': 'hyperocampal Volume Summary',
-                'script': 'stats_hp',
-                'opts': '-t stats_hp -v in_dir -f out_csv',
-                'helpmsg': 'Generates volumetric summary of hyperocampus segmentations'
+                'name': 'Intracranial Vault Volume Summary',
+                'script': 'stats_wmh',
+                'opts': '-t stats_wmh -v in_dir -f out_csv',
+                'helpmsg': 'Generates volumetric summary of wmh segmentations'
             },
         }
     },
@@ -139,7 +139,7 @@ def main():
     mainwidget.move(QtWidgets.QApplication.desktop().screen().rect().center() - mainwidget.rect().center())
 
     ver = hypermapper.__version__
-    mainwidget.setWindowTitle("hyperMapp3r %s" % ver)
+    mainwidget.setWindowTitle("HyperMapp3r %s" % ver)
 
     p = mainwidget.palette()
     # p.setColor(mainwidget.backgroundRole(), QtCore.Qt.black)

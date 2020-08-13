@@ -5,7 +5,7 @@ setup(
     name='HyperMapp3r',
     version=__version__,
     description='A CNN-based segmentation technique using MRI images from BrainLab',
-    author=['Maged Goubran', 'Parisa Forooshani', 'Mahdi Biparva', 'Edward Ntiri'],
+    author=['Maged Goubran', 'Parisa Mojiri', 'Edward Ntiri'],
     author_email='maged.goubran@sri.utoronto.ca',
     packages=find_packages(),
     include_package_data=True,
@@ -35,9 +35,8 @@ setup(
     dependency_links=[
         'git+https://github.com/keras-team/keras-contrib.git'
     ],
-    install_requires=[
-        'nibabel', 'nipype', 'argparse', 'argcomplete', 'joblib', 'keras', 'nilearn', 'scikit-learn',
-        'keras-contrib', 'pandas', 'numpy', 'plotly', 'PyQt5'
+    install_requires=['nibabel', 'nipype', 'argparse', 'argcomplete', 'joblib', 'keras==2.1.2', 'nilearn', 'scikit-learn',
+        'keras-contrib', 'pandas', 'numpy', 'plotly', 'PyQt5', 'termcolor'
     ],
     extras_require={
         "hypermapper": ["tensorflow"],

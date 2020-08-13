@@ -1,37 +1,37 @@
 # Getting started
 
-You can use HippMapp3r through the graphical user interface (GUI) or command line:
+You can use HyperMapp3r through the graphical user interface (GUI) or command line:
 
 ## For GUI
 
 To start the GUI, type
 
-    hippmapper
+    hypermapper
 
 A GUI that looks like the image below should appear. You can hover any of buttons in the GUI to see a brief description of the command.
 
-![](images/hippmapper_gui.png)
+![](images/hypermapper_gui.png)
 
 You can get the command usage info by click the "Help" box on any of the pop-up windows.
 
-![](images/hippmapper_help.png)
+![](images/hypermapper_help.png)
 
 ## For Command Line
 
-You can see all the hippmapper commands by typing either of the following lines:
+You can see all the hypermapper commands by typing either of the following lines:
 
-    hippmapper -h
-    hippmapper --help
+    hypermapper -h
+    hypermapper --help
 
-Once you know the command you want to know from the list, you can see more information about the command. For example, to learn more about seg_hfb:
+Once you know the command you want to know from the list, you can see more information about the command. For example, to learn more about seg_wmh:
 
-    hippmapper seg_hipp -h
-    hippmapper seg_hipp --help
+    hypermapper seg_wmh -h
+    hypermapper seg_wmh --help
 
-## Hippocampal volumes
-To extract hippocampal volumes use the GUI (Stats/Hippocampal Volumes) or command line:
+## WMH volumes
+To extract WMH volumes use the GUI (Stats/WMH) or command line:
 
-    hippmapper stats_hp -h
+    hypermapper stats_wmh -h
 
 ## QC
 QC files are automatically generated in a sub-folder within the subject folder.
@@ -40,11 +40,11 @@ help you quickly evaluate if your command worked successfully,
 especially if you have run multiple subjects.
 They can also be created through the GUI or command line:
 
-    hippmapper seg_qc -h
+    hypermapper seg_qc -h
 
 The QC image should look like this:
 
-![](images/hipp_qc_corr.png)
+![](images/wmh_seg_qc.png)
 
 
 ## Logs
@@ -56,13 +56,13 @@ and can be useful if something did not work successfully.
 
 Convert Analyze to Nifti (or vice versa)
 
-    hippmapper filetype
+    hypermapper filetype
 
     Required arguments:
     -i , --in_img    input image, ex:MM.img
     -o , --out_img   output image, ex:MM.nii
 
     Example:
-    hippmapper filetype --in_img subject_T1.img --out_img subject_T1.nii.gz
+    hypermapper filetype --in_img subject_T1.img --out_img subject_T1.nii.gz
 
 
