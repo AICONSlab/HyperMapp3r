@@ -39,8 +39,8 @@ setup(
         'keras-contrib', 'pandas', 'numpy', 'plotly', 'PyQt5', 'termcolor'
     ],
     extras_require={
-        "hypermapper": ["tensorflow==1.13.1"],
-        "hypermapper_gpu": ["tensorflow-gpu==1.13.1"],
+        "hypermapper": ["tensorflow"],
+        "hypermapper_gpu": ["tensorflow-gpu"],
     },
     entry_points={'console_scripts': ['hypermapper=hypermapper.cli:main']},
     keywords=[

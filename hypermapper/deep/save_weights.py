@@ -10,12 +10,12 @@ import sys
 in_model = sys.argv[1]
 model_name = sys.argv[2]
 
-custom_objects = {'dice_coefficient_loss': hippmapper.deep.metrics.dice_coefficient_loss,
-                  'dice_coefficient': hippmapper.deep.metrics.dice_coefficient,
-                  'dice_coef': hippmapper.deep.metrics.dice_coef,
-                  'dice_coef_loss': hippmapper.deep.metrics.dice_coef_loss,
-                  'weighted_dice_coefficient': hippmapper.deep.metrics.weighted_dice_coefficient,
-                  'weighted_dice_coefficient_loss': hippmapper.deep.metrics.weighted_dice_coefficient_loss,
+custom_objects = {'dice_coefficient_loss': hypermapper.deep.metrics.dice_coefficient_loss,
+                  'dice_coefficient': hypermapper.deep.metrics.dice_coefficient,
+                  'dice_coef': hypermapper.deep.metrics.dice_coef,
+                  'dice_coef_loss': hypermapper.deep.metrics.dice_coef_loss,
+                  'weighted_dice_coefficient': hypermapper.deep.metrics.weighted_dice_coefficient,
+                  'weighted_dice_coefficient_loss': hypermapper.deep.metrics.weighted_dice_coefficient_loss,
                   "InstanceNormalization": InstanceNormalization}
 
 model = load_model(in_model, custom_objects=custom_objects)

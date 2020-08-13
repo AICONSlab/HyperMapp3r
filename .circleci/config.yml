@@ -28,7 +28,7 @@ jobs:
                 --rm=false \
                 --no-cache \
                 -t ${CONTAINER_NAME} \
-                -f /tmp/src/hyperMapp3r/Dockerfile \
+                -f /tmp/src/HyperMapp3r/Dockerfile \
                 --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
                 --build-arg VCS_REF=`git rev-parse --short HEAD` \
                 --build-arg VERSION="${CIRCLE_TAG:-$THISVERSION}" . \
@@ -39,8 +39,9 @@ jobs:
           no_output_timeout: 2h
           command: |
 
-             echo "Runing tests:"
-             docker run --entrypoint bash -it mgoubran/hyperpmapper -c "hypermapper seg_wmh -t1 /HyperMapp3r/data/test_case/t1.nii.gz -fl /HyperMapp3r/data/test_case/fl.nii.gz -m /HyperMapp3r/data/test_case/mask.nii.gz"
+             echo "Running tests:"
+             #docker run --entrypoint bash -it mgoubran/hypermapper -c "hypermapper seg_wmh -t1 /src/hypermapp3r/data/test_case/mprage.nii.gz -fl /src/hypermapp3r/data/test_case/mprage.nii.gz -m /src/hypermapp3r/data/test_case/mprage_hfb_mask.nii.gz -n 1"
+             docker run --entrypoint bash -it mgoubran/hypermapper -c "hypermapper seg_wmh --help"
 
       - store_test_results:
           path: /home/circleci/out/tests
