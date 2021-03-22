@@ -62,5 +62,5 @@ RUN mkdir -p /src/hypermapp3r/models && \
     rm -rf /tmp/cookies.txt && \
 
 
-# Run icvmapper when the container launches
+# Run hypermapper when the container launches
 ENTRYPOINT /bin/bash
