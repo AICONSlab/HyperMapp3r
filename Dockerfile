@@ -25,6 +25,7 @@ ENV PATH /opt/c3d/bin:${PATH}
 
 # Install FSL
 RUN apt-get update && apt-get install -y fsl
+RUN pip install --upgrade "pip < 21.0"
 
 ENV FSLDIR="/usr/share/fsl/5.0" \
     FSLOUTPUTTYPE="NIFTI_GZ" \
@@ -46,7 +47,7 @@ ENV PATH=${ANTSPATH}:${PATH}
 
 # Install all needed packages based on pip installation
 COPY requirements.txt ./
-RUN python3 -m pip install -r requirements.txt
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Download models, store in directory
