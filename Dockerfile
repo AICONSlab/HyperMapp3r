@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y git wget build-essential g++ gcc cmake 
     apt-get install -y python3-pip python3-dev && \
     cd /usr/local/bin/ && \
     ln -s /usr/bin/python3 python && \
-    pip3 install --upgrade pip && \
+    pip3 install --upgrade pip==20.3.4 && \
     cd ~
 
 # Install c3d
@@ -25,7 +25,6 @@ ENV PATH /opt/c3d/bin:${PATH}
 
 # Install FSL
 RUN apt-get update && apt-get install -y fsl
-RUN pip install --upgrade "pip < 21.0"
 
 ENV FSLDIR="/usr/share/fsl/5.0" \
     FSLOUTPUTTYPE="NIFTI_GZ" \
