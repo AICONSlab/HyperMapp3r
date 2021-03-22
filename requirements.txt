@@ -129,3 +129,4 @@ webencodings==0.5.1
 Werkzeug==0.14.1
 widgetsnbextension==3.4.2
 zipp==0.3.3
+-e git+https://github.com/mgoubran/HyperMapp3r.git@parisa_testing#egg=HyperMapp3r
