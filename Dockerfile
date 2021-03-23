@@ -6,10 +6,10 @@ RUN apt-get update && apt-get install -y git wget build-essential g++ gcc cmake 
     apt-get install -y libfreetype6-dev apt-utils pkg-config vim gfortran && \
     apt-get install -y binutils make linux-source unzip && \
     apt install -y libsm6 libxext6 libfontconfig1 libxrender1 libgl1-mesa-glx && \
-    apt-get install -y python3-pip python3-dev && \
+    apt-get install -y python3.6-pip python3.6-dev && \
     cd /usr/local/bin/ && \
-    ln -s /usr/bin/python3 python && \
-    pip3 install --upgrade pip==20.3.4 && \
+    ln -s /usr/bin/python3.6 python && \
+    pip3 install --upgrade pip && \
     cd ~
 
 # Install c3d
@@ -46,7 +46,7 @@ ENV PATH=${ANTSPATH}:${PATH}
 
 # Install all needed packages based on pip installation
 COPY requirements.txt ./
-RUN python3 -m pip install --no-cache-dir -r requirements.txt
+RUN python3.6 -m pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Download models, store in directory
@@ -56,10 +56,10 @@ RUN mkdir -p /src/icvmapp3r/models /src/hypermapp3r/models && \
 #     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO" -O /src/hypermapp3r/models/wmh_mcdp_multi_model.json && \
 #     rm -rf /tmp/cookies.txt && \
 
-#     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1TDHy6dyuD3CmUPcYJZSHmtOfNEFNhPO4' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1TDHy6dyuD3CmUPcYJZSHmtOfNEFNhPO4" -O /src/hypermapp3r/models/wmh_mcdp_224iso_multi_model_weights.h5 && \
-#     rm -rf /tmp/cookies.txt && \
-#     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1u60w2CzcvMk9JeEFvoCSixoKwLHEaPyQ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1u60w2CzcvMk9JeEFvoCSixoKwLHEaPyQ" -O /src/hypermapp3r/models/wmh_mcdp_224iso_multi_model.json && \
-#     rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1TDHy6dyuD3CmUPcYJZSHmtOfNEFNhPO4' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1TDHy6dyuD3CmUPcYJZSHmtOfNEFNhPO4" -O /src/hypermapp3r/models/wmh_mcdp_224iso_multi_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1u60w2CzcvMk9JeEFvoCSixoKwLHEaPyQ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1u60w2CzcvMk9JeEFvoCSixoKwLHEaPyQ" -O /src/hypermapp3r/models/wmh_mcdp_224iso_multi_model.json && \
+    rm -rf /tmp/cookies.txt
 
 
 # Run hypermapper when the container launches
