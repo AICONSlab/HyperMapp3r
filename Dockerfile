@@ -46,15 +46,15 @@ ENV PATH=${ANTSPATH}:${PATH}
 
 # Install all needed packages based on pip installation
 COPY requirements.txt ./
-RUN python3 -m pip install --no-cache-dir -r requirements.txt
+RUN python3.6 -m pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Download models, store in directory
 RUN mkdir -p /src/hypermapp3r/models && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_" -O /src/hypermapp3r/models/wmh_mcdp_multi_model_weights.h5 && \
-    rm -rf /tmp/cookies.txt && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO" -O /src/hypermapp3r/models/wmh_mcdp_multi_model.json && \
-    rm -rf /tmp/cookies.txt && \
+#     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_" -O /src/hypermapp3r/models/wmh_mcdp_multi_model_weights.h5 && \
+#     rm -rf /tmp/cookies.txt && \
+#     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO" -O /src/hypermapp3r/models/wmh_mcdp_multi_model.json && \
+#     rm -rf /tmp/cookies.txt && \
 
     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1TDHy6dyuD3CmUPcYJZSHmtOfNEFNhPO4' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1TDHy6dyuD3CmUPcYJZSHmtOfNEFNhPO4" -O /src/hypermapp3r/models/wmh_mcdp_224iso_multi_model_weights.h5 && \
     rm -rf /tmp/cookies.txt && \
