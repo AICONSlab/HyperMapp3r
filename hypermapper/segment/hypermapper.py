@@ -117,6 +117,24 @@ def check_orient(in_img_file, r_orient, l_orient, out_img_file):
     return cp_orient
 
 
+def image_std(img, img_std):
+    print("\n standardization ...")
+    image = nib.load(img)
+    data = image.get_data()
+
+    data_mask = np.abs(data) > 0.0
+
+    data_foreground = data[data_mask]
+    data_mean = data_foreground.mean()
+    data_std = data_foreground.std()
+    print("mean is:" + str(data_mean))
+    print("std is:" + str(data_std))
+    std_data = data
+    std_data[data_mask] = np.divide(data_foreground - data_mean, data_std)
+
+    nib.save(nib.Nifti1Image(std_data, image.affine), img_std)
+
+
 def cutoff_img(in_file, cutoff_percents, out_file):
     print("\n thresholding ...")
     img = nib.load(in_file)
@@ -247,7 +265,7 @@ def main(args):
         file_path = os.path.realpath(__file__)
         hyper_dir = Path(file_path).parents[2]
 
-        model_name = 'wmh_mcdp_multi'
+        model_name = 'wmh_mcdp_224iso_multi'
         model_json = '%s/models/%s_model.json' % (hyper_dir, model_name)
         model_weights = '%s/models/%s_model_weights.h5' % (hyper_dir, model_name)
 
@@ -315,7 +333,8 @@ def main(args):
                 trim(seq_masked, seq_res_trim, voxels=1)
                 # standardized
                 seq_std = "%s/t1_masked_cropped_standardized.nii.gz" % pred_dir
-                normalize_sample_wise_img(seq_res_trim, seq_std)
+                # normalize_sample_wise_img(seq_res_trim, seq_std)
+                image_std(seq_res_trim, seq_std)
             else:
                 seq_res_trim = '%s/fl_masked_cropped.nii.gz' % pred_dir
                 img_ref = '%s/t1_masked_cropped.nii.gz' % pred_dir
@@ -323,12 +342,14 @@ def main(args):
                 trim_like(seq_masked, img_ref, seq_res_trim, interp=1)
                 # standardized
                 seq_std = "%s/fl_masked_cropped_standardized.nii.gz" % pred_dir
-                normalize_sample_wise_img(seq_res_trim, seq_std)
+                # normalize_sample_wise_img(seq_res_trim, seq_std)
+                image_std(seq_res_trim, seq_std)
 
         t1_new = '%s/t1_masked_cropped_standardized.nii.gz' % pred_dir
         fl_new = '%s/fl_masked_cropped_standardized.nii.gz' % pred_dir
         test_seqs_new = [t1_new, fl_new]
-        pred_shape = [160, 160, 160]
+        # pred_shape = [160, 160, 160]
+        pred_shape = [224, 224, 224]
         t1_img = nib.load(t1_new)
         test_data = np.zeros((1, len(training_mods), pred_shape[0], pred_shape[1], pred_shape[2]),
                              dtype=t1_img.get_data_dtype())

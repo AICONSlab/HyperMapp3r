@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y git wget build-essential g++ gcc cmake 
     apt-get install -y python3-pip python3-dev && \
     cd /usr/local/bin/ && \
     ln -s /usr/bin/python3 python && \
-    pip3 install --upgrade pip && \
+    pip3 install --upgrade pip==20.3.4 && \
     cd ~
 
 # Install c3d
@@ -51,14 +51,17 @@ COPY . .
 
 # Download models, store in directory
 RUN mkdir -p /src/icvmapp3r/models /src/hypermapp3r/models && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16PMIZKPk5-sFpm8iHiKTDo32vi_eFAb-' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16PMIZKPk5-sFpm8iHiKTDo32vi_eFAb-" -O /src/hypermapp3r/models/wmh_mcdp_model_weights.h5 && \
+#     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_" -O /src/hypermapp3r/models/wmh_mcdp_multi_model_weights.h5 && \
+#     rm -rf /tmp/cookies.txt && \
+#     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO" -O /src/hypermapp3r/models/wmh_mcdp_multi_model.json && \
+#     rm -rf /tmp/cookies.txt && \
+
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1TDHy6dyuD3CmUPcYJZSHmtOfNEFNhPO4' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1TDHy6dyuD3CmUPcYJZSHmtOfNEFNhPO4" -O /src/hypermapp3r/models/wmh_mcdp_224iso_multi_model_weights.h5 && \
     rm -rf /tmp/cookies.txt && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1r_TyA65nJoH7Dt2S6oZEluakAgWbPn3_" -O /src/hypermapp3r/models/wmh_mcdp_multi_model_weights.h5 && \
-    rm -rf /tmp/cookies.txt && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fU566Xtr6KuQ4oT3XWG3s84f6IG2yYfO" -O /src/hypermapp3r/models/wmh_mcdp_multi_model.json && \
-    rm -rf /tmp/cookies.txt && \
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1XvtX_pdMKeQs0TkK37ny4lj1rPWFkat_' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1XvtX_pdMKeQs0TkK37ny4lj1rPWFkat_" -O /src/hypermapp3r/models/wmh_mcdp_org_model.json && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1u60w2CzcvMk9JeEFvoCSixoKwLHEaPyQ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1u60w2CzcvMk9JeEFvoCSixoKwLHEaPyQ" -O /src/hypermapp3r/models/wmh_mcdp_224iso_multi_model.json && \
     rm -rf /tmp/cookies.txt
 
-# Run icvmapper when the container launches
-ENTRYPOINT /bin/bash
+
+# Run hypermapper when the container launches
+# ENTRYPOINT ["/bin/bash"]
+
