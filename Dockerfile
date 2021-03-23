@@ -1,5 +1,5 @@
 # Use a Linux Distro as a parent image
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # Set up
 RUN apt-get update && apt-get install -y git wget build-essential g++ gcc cmake curl clang && \
