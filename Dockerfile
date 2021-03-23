@@ -6,10 +6,10 @@ RUN apt-get update && apt-get install -y git wget build-essential g++ gcc cmake 
     apt-get install -y libfreetype6-dev apt-utils pkg-config vim gfortran && \
     apt-get install -y binutils make linux-source unzip && \
     apt install -y libsm6 libxext6 libfontconfig1 libxrender1 libgl1-mesa-glx && \
-    apt-get install -y python3.6-pip python3.6-dev && \
+    apt-get install -y python3-pip python3-dev && \
     cd /usr/local/bin/ && \
-    ln -s /usr/bin/python3.6 python && \
-    pip3 install --upgrade pip && \
+    ln -s /usr/bin/python3 python && \
+    pip3 install --upgrade pip==20.3.4 && \
     cd ~
 
 # Install c3d
@@ -46,7 +46,7 @@ ENV PATH=${ANTSPATH}:${PATH}
 
 # Install all needed packages based on pip installation
 COPY requirements.txt ./
-RUN python3.6 -m pip install --no-cache-dir -r requirements.txt
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Download models, store in directory
