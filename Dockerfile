@@ -47,7 +47,7 @@ ENV PATH=${ANTSPATH}:${PATH}
 
 # Install all needed packages based on pip installation
 COPY requirements.txt ./
-RUN python3.6 -m pip install --no-cache-dir -r requirements.txt
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Download models, store in directory
