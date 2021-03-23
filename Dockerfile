@@ -63,5 +63,5 @@ RUN mkdir -p /src/icvmapp3r/models /src/hypermapp3r/models && \
 
 
 # Run hypermapper when the container launches
-ENTRYPOINT ["/bin/bash"]
+# ENTRYPOINT ["/bin/bash"]
 
