@@ -1,4 +1,4 @@
--e git+https://github.com/mgoubran/HyperMapp3r.git@parisa_testing#egg=HyperMapp3r
+-e git+https://github.com/mgoubran/HyperMapp3r.git@master#egg=HyperMapp3r
 absl-py==0.5.0
 arff==0.9
 argcomplete==1.10.0
