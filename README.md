@@ -7,7 +7,7 @@ It uses a T1-weighted, FLAIR, and brain mask images as the inputs and segments.
 
 <p align="center">
       <img src="docs/images/wmh_pipeline.png" alt="hippocampus pop-up window"
-      width="600" height="200"/>
+      width="800" height="300"/>
 </p>
 
 
