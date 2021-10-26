@@ -13,7 +13,7 @@ If either ANTs or c3d are not installed on your machine, run `install_depends.sh
 
 1. Clone repository
 
-        git clone https://github.com/mgoubran/HyperMapp3r.git HyperMapp3r
+        git clone https://github.com/AICONSlab/HyperMapp3r.git HyperMapp3r
 
         (or install zip file and uncompress)
 
