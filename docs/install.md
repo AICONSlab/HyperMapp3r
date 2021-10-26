@@ -7,7 +7,7 @@ For the main required Python packages (numpy, scipy, etc.) we recommend using
 
 ## ANTs & Convert3D (c3d)
 
-If either ANTs or c3d are not installed on your machine, run `install_depends.sh`, located in the project directory. The required software will be installed in the `depends` directory
+If either ANTs or c3d are not installed on your machine, run `install_depends.sh`, located in the project directory. The required software will be installed in the `depends` directory.  If you are intrested to install c3d on MacOS or Windows, you can dowanlod it from [this link](http://www.itksnap.org/pmwiki/pmwiki.php?n=Downloads.C3D).
 
 ## Installing package and dependencies for HippMapp3r locally
 
