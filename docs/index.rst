@@ -14,7 +14,7 @@ It uses a T1-weighted, FLAIR, and brain mask images as the inputs and segments.
 Copyright (C) 2020 BrainLab.
 
 .. image:: images/wmh_pipeline.png
-    :width: 550px
+    :width: 800px
     :alt: Graph abstract
     :align: center
     
