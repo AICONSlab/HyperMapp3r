@@ -11,7 +11,7 @@ using MRI images from BrainLab.
 It can deal with brains with extensive atrophy and segments the wmh in seconds.
 It uses a T1-weighted, FLAIR, and brain mask images as the inputs and segments.
 
-Copyright (C) 2020 BrainLab.
+Copyright (C) 2020 AICONSLab.
 
 .. image:: images/wmh_pipeline.png
     :width: 800px
@@ -30,9 +30,3 @@ Copyright (C) 2020 BrainLab.
    docker
 
 
-Indices and tables
-====================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
