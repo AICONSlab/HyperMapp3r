@@ -15,4 +15,4 @@ ____________________________
 
 For more details, see our [docs](https://hypermapp3r.readthedocs.io).
 
-Copyright (C) 2020 BrainLab.
+Copyright (C) 2020 AICONSLab.
