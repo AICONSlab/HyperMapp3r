@@ -1,4 +1,6 @@
+======================
 # Docker / Singularity
+======================
 
 If you intend to use Singularity, scroll down to the Singularity section. Otherwise, the steps to use the image in Docker can be found below.
 

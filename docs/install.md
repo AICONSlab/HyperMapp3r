@@ -1,4 +1,6 @@
+===============
 # Local Install
+=============== 
 
 ## Python
 For the main required Python packages (numpy, scipy, etc.) we recommend using
