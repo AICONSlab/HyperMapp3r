@@ -7,14 +7,16 @@ You can use HyperMapp3r through the graphical user interface (GUI) or command li
 ## For GUI
 
 To start the GUI, type
-ge
+
     hypermapper
 
 A GUI that looks like the image below should appear. You can hover any of buttons in the GUI to see a brief description of the command.
 
+![](images/hypermapper_gui.png)
 
-You can get the command usage info by click the "Help" box on any of the pop-up windows.
+You can get the command usage info by clicking the "Help" box on any of the pop-up windows.
 
+![](images/hypermapper_help.png)
 
 ## For Command Line
 
@@ -42,6 +44,9 @@ They can also be created through the GUI or command line:
 
     hypermapper seg_qc -h
 
+The QC image should look like this:
+
+![](images/wmh_seg_corr.png)
 
 ## Logs
 Log files are automatically generated in a sub-folder within the subject folder.
