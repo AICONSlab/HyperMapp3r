@@ -14,7 +14,7 @@ from hypermapper import gui
 from hypermapper.segment import hypermapper
 from hypermapper.convert import filetype
 from hypermapper.preprocess import biascorr, trim_like
-from hypermapper.qc import seg_qc
+from hypermapper.qc import seg_qc, reg_svg
 from hypermapper.stats import summary_wmh_vols
 from hypermapper.utils.path_manager import add_paths
 
@@ -43,6 +43,10 @@ def run_wmh_seg_summary(args):
 
 def run_seg_qc(args):
     seg_qc.main(args)
+    
+
+def run_reg_svg(args):
+    reg_svg.main(args)
 
 
 def run_utils_biascorr(args):
@@ -77,6 +81,13 @@ def get_parser():
                                           usage=seg_qc_parser.usage)
     parser_seg_qc.set_defaults(func=run_seg_qc)
 
+    # --------------
+    
+    # reg_svg
+    reg_svg_parser = reg_svg.parsefn()
+    parser_reg_svg = subparsers.add_parser('reg_svg', add_help=False, parents=[reg_svg_parser], usage=reg_svg_parser.usage)
+    parser_reg_svg.set_defaults(func=run_reg_svg)
+    
     # --------------
 
     # utils biascorr
