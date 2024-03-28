@@ -109,6 +109,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 DOC_SOURCES_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT_DIR = os.path.dirname(os.path.dirname(DOC_SOURCES_DIR))
+print(PROJECT_ROOT_DIR)
 # Hack for lacking git-lfs support ReadTheDocs
 if on_rtd:
     print('Fetching files with git_lfs')
