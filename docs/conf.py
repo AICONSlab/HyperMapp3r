@@ -107,14 +107,13 @@ html_static_path = ['_static']
 # html_sidebars = {}
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-DOC_SOURCES_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT_DIR = os.path.dirname(os.path.dirname(DOC_SOURCES_DIR))
-print(PROJECT_ROOT_DIR)
-# Hack for lacking git-lfs support ReadTheDocs
-if on_rtd:
-    print('Fetching files with git_lfs')
-    from git_lfs import fetch
-    fetch(PROJECT_ROOT_DIR)
+# DOC_SOURCES_DIR = os.path.dirname(os.path.abspath(__file__))
+# PROJECT_ROOT_DIR = os.path.dirname(os.path.dirname(DOC_SOURCES_DIR))
+# # Hack for lacking git-lfs support ReadTheDocs
+# if on_rtd:
+#     print('Fetching files with git_lfs')
+#     from git_lfs import fetch
+#     fetch(PROJECT_ROOT_DIR)
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
