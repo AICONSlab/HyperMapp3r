@@ -12,11 +12,11 @@ To start the GUI, type
 
 A GUI that looks like the image below should appear. You can hover any of buttons in the GUI to see a brief description of the command.
 
-![](images/hypermapper_gui.png)
+![](./images/hypermapper_gui.png)
 
 You can get the command usage info by clicking the "Help" box on any of the pop-up windows.
 
-![](images/hypermapper_help.png)
+![](./images/hypermapper_help.png)
 
 ## For Command Line
 
