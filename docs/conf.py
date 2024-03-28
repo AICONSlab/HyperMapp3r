@@ -12,8 +12,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
+import os
+import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -105,7 +105,15 @@ html_static_path = ['_static']
 # 'searchbox.html']``.
 #
 # html_sidebars = {}
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
+DOC_SOURCES_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT_DIR = os.path.dirname(os.path.dirname(DOC_SOURCES_DIR))
+# Hack for lacking git-lfs support ReadTheDocs
+if on_rtd:
+    print('Fetching files with git_lfs')
+    from git_lfs import fetch
+    fetch(PROJECT_ROOT_DIR)
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
