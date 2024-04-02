@@ -32,3 +32,7 @@ Copyright (C) 2020 AICONSLab.
    docker 
 
 
+We recommend using HyperMapp3r with the Docker or Singularity containers we provide 
+but it can also be installed locally. See our 
+:doc:`installation instructions <./install>` for more information.
+
