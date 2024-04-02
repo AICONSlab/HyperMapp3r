@@ -7,7 +7,7 @@
    `Docker` is our recommended method for running `HyperMapp3r` 
    on local machines and servers. We recommend `Singularity` to run 
    `HyperMapp3r` in a cluster environment (e.g. Compute Canada).
-   For information on how to install and use these, please see [Docker / Singularity](https://github.com/AICONSlab/HyperMapp3r/edit/master/docs/docker.md)
+   For information on how to install and use these, please see [Docker / Singularity](https://hypermapp3r.readthedocs.io/en/latest/docker.html)
 
 ## Python
 For the main required Python packages (numpy, scipy, etc.) we recommend using
