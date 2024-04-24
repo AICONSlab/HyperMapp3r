@@ -369,7 +369,7 @@ def main(args):
         test_seqs_new = [t1_new, fl_new]
         # pred_shape = [160, 160, 160]
         pred_shape = [224, 224, 224]
-        if modelId == 'multi':
+        if modelId == 'multi' or modelId == 'con':
             pred_shape = [160, 160, 160]
         t1_img = nib.load(t1_new)
         test_data = np.zeros((1, len(training_mods), pred_shape[0], pred_shape[1], pred_shape[2]),
