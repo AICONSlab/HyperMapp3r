@@ -40,7 +40,7 @@ def parsefn():
     optional.add_argument("-ign_ort", "--ign_ort",  action='store_true',
                           help="ignore orientation if tag is wrong")
     
-    optional.add_argument('-id', '--modelId',  type=str, default='multi')
+    optional.add_argument('-id', '--modelId',  type=str, default='224multi')
     optional.add_argument('-n', '--num_mc', type=int, metavar='', help="number of Monte Carlo Dropout samples", default=20)
     optional.add_argument('-th', '--thresh', type=float, metavar='', help="threshold", default=0.5)
     optional.add_argument('-f', '--force', help="overwrite existing segmentation", action='store_true')
