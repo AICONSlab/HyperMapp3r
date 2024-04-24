@@ -281,7 +281,6 @@ def main(args):
             model_name = 'wmh_mcdp_t1only_multi'
         elif modelId == "multi":
             model_name = 'wmh_mcdp_multi'
-
         else:
             print("Error, incorrect model id - please choose '224multi', 'con', '224all', 'multi', or 't1m' with the -id flag")
             exit(1)
@@ -370,6 +369,8 @@ def main(args):
         test_seqs_new = [t1_new, fl_new]
         # pred_shape = [160, 160, 160]
         pred_shape = [224, 224, 224]
+        if modelId == 'multi':
+            pred_shape = [160, 160, 160]
         t1_img = nib.load(t1_new)
         test_data = np.zeros((1, len(training_mods), pred_shape[0], pred_shape[1], pred_shape[2]),
                              dtype=t1_img.get_data_dtype())
