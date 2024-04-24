@@ -14,6 +14,7 @@
 #
 import os
 import sys
+import myst_parser
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -52,7 +53,7 @@ sphinx_gallery_conf = {
     'notebook_images': 'images/'
 }
 
-
+extensions = ["myst_parser"]
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #

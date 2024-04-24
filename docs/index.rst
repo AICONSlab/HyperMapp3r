@@ -13,6 +13,10 @@ using MRI images from BrainLab.
 It can deal with brains with extensive atrophy and segments the wmh in seconds.
 It uses a T1-weighted, FLAIR, and brain mask images as the inputs and segments.
 
+We recommend using HyperMapp3r with the Docker or Singularity containers we provide 
+but it can also be installed locally. See our 
+:doc:`installation instructions <./install>` for more information.
+
 Copyright (C) 2020 AICONSLab.
 
 .. image:: images/wmh_pipeline.png
@@ -30,5 +34,6 @@ Copyright (C) 2020 AICONSLab.
    beginner
    wmh_seg    
    docker 
+
 
 
