@@ -271,16 +271,19 @@ def main(args):
 
         file_path = os.path.realpath(__file__)
         hyper_dir = Path(file_path).parents[2]
-        if modelId == "multi":
+        if modelId == "224multi":
             model_name = 'wmh_mcdp_224iso_multi'
         elif modelId == "con":
             model_name = 'wmh_mcdp_contrast'
-        elif modelId == "all":
+        elif modelId == "224all":
             model_name = 'wmh_mcdp_224iso_all'
         elif modelId == "t1m":
             model_name = 'wmh_mcdp_t1only_multi'
+        elif modelId == "multi":
+            model_name = 'wmh_mcdp_multi'
+
         else:
-            print("Error, incorrect model id - please choose 'multi', 'con', 'all', or t1m with the -id flag")
+            print("Error, incorrect model id - please choose '224multi', 'con', '224all', 'multi', or 't1m' with the -id flag")
             exit(1)
         model_json = '%s/models/%s_model.json' % (hyper_dir, model_name)
         model_weights = '%s/models/%s_model_weights.h5' % (hyper_dir, model_name)

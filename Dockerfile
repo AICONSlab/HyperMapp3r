@@ -70,9 +70,12 @@ RUN mkdir -p /src/icvmapp3r/models /src/hypermapp3r/models && \
     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16CIIr9jzvD-53bhXNHsYBnVhnV0kd9EI' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16CIIr9jzvD-53bhXNHsYBnVhnV0kd9EI" -O /src/hypermapp3r/models/wmh_mcdp_t1only_multi_model_weights.h5 && \
     rm -rf /tmp/cookies.txt && \
     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16GcD7xRLk6RrqLaNwnnmjtjJ3GBL47Ye' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16GcD7xRLk6RrqLaNwnnmjtjJ3GBL47Ye" -O /src/hypermapp3r/models/wmh_mcdp_t1only_multi_model.json && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16B_bXErCHTGnOUQTCl-p8HkwwuD725SI' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16B_bXErCHTGnOUQTCl-p8HkwwuD725SI" -O /src/hypermapp3r/models/wmh_mcdp_multi_model_weights.h5 && \
+    rm -rf /tmp/cookies.txt && \
+    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1667lDAAIVZQWhi3NbfTaBBr3kh1lMSIA' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1667lDAAIVZQWhi3NbfTaBBr3kh1lMSIA" -O /src/hypermapp3r/models/wmh_mcdp_multi_model.json && \
     rm -rf /tmp/cookies.txt
     
-
 # Run hypermapper when the container launches
 # ENTRYPOINT ["/bin/bash"]
 
