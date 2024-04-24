@@ -36,8 +36,11 @@ def parsefn():
     optional.add_argument('-t2', '--t2w', type=str, metavar='', help="input T2-weighted")
     optional.add_argument('-m', '--mask', type=str, metavar='', help="brain mask")
     optional.add_argument('-o', '--out', type=str, metavar='', help="output prediction")
+
     optional.add_argument("-ign_ort", "--ign_ort",  action='store_true',
                           help="ignore orientation if tag is wrong")
+    
+    optional.add_argument('-id', '--modelId',  type=str, default='multi')
     optional.add_argument('-n', '--num_mc', type=int, metavar='', help="number of Monte Carlo Dropout samples", default=20)
     optional.add_argument('-th', '--thresh', type=float, metavar='', help="threshold", default=0.5)
     optional.add_argument('-f', '--force', help="overwrite existing segmentation", action='store_true')
@@ -78,8 +81,12 @@ def parse_inputs(parser, args):
 
     ign_ort = True if args.ign_ort else False
 
+
     force = True if args.force else False
-    return subj_dir, subj, t1, fl, t2, mask, out, num_mc, thresh, ign_ort, force
+
+    modelId = args.modelId
+    return subj_dir, subj, t1, fl, t2, mask, out, num_mc, thresh, ign_ort, force, modelId
+
 
 def orient_img(in_img_file, orient_tag, out_img_file):
     c3 = C3d()
@@ -245,7 +252,7 @@ def copy_orient(in_img_file, ref_img_file, out_img_file):
 ###########################################        Main        #########################################################
 def main(args):
     parser = parsefn()
-    subj_dir, subj, t1, fl, t2, mask, out, num_mc, thresh, ign_ort, force = parse_inputs(parser, args)
+    subj_dir, subj, t1, fl, t2, mask, out, num_mc, thresh, ign_ort, force, modelId = parse_inputs(parser, args)
     cp_orient = False
 
     if out is None:
@@ -264,10 +271,17 @@ def main(args):
 
         file_path = os.path.realpath(__file__)
         hyper_dir = Path(file_path).parents[2]
-
-        model_name = 'wmh_mcdp_224iso_multi'
+        if modelId == "multi":
+            model_name = 'wmh_mcdp_224iso_multi'
+        elif modelId == "con":
+            model_name = 'wmh_mcdp_contrast'
+        elif modelId == "all":
+            model_name = 'wmh_mcdp_224iso_all'
+        else:
+            print("Error, incorrect model id - please choose 'multi', 'con', or 'all' with the -id flag")
         model_json = '%s/models/%s_model.json' % (hyper_dir, model_name)
         model_weights = '%s/models/%s_model_weights.h5' % (hyper_dir, model_name)
+
 
         assert os.path.exists(model_json), "%s does not exits ... please download and rerun script" % model_json
         assert os.path.exists(model_weights), "%s does not exits ... please download and rerun script" % model_weights
