@@ -277,8 +277,11 @@ def main(args):
             model_name = 'wmh_mcdp_contrast'
         elif modelId == "all":
             model_name = 'wmh_mcdp_224iso_all'
+        elif modelId == "t1m":
+            model_name = 'wmh_mcdp_t1only_multi'
         else:
-            print("Error, incorrect model id - please choose 'multi', 'con', or 'all' with the -id flag")
+            print("Error, incorrect model id - please choose 'multi', 'con', 'all', or t1m with the -id flag")
+            exit(1)
         model_json = '%s/models/%s_model.json' % (hyper_dir, model_name)
         model_weights = '%s/models/%s_model_weights.h5' % (hyper_dir, model_name)
 
