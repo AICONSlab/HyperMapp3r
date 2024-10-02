@@ -19,7 +19,7 @@ Once Docker is installed, open the docker terminal and test it with the command
 
 ## Pulling HyperMapp3r's Docker image
 
-While you can download various Docker images, for the sake of this tutorial pull the HyperMpp3r image
+While you can download various Docker images, for the sake of this tutorial pull the HyperMapp3r image
 
     docker pull mgoubran/hypermapper:latest
 
