@@ -1,6 +1,6 @@
 # Use a Linux Distro as a parent image
-FROM ubuntu:16.04
-
+FROM neurodebian:focal
+ARG DEBIAN_FRONTEND=noninteractive 
 # Set up
 RUN apt-get update && apt-get install -y git wget build-essential g++ gcc cmake curl clang && \
     apt-get install -y libfreetype6-dev apt-utils pkg-config vim gfortran && \
@@ -37,12 +37,44 @@ ENV FSLDIR="/usr/share/fsl/5.0" \
 
 ENV PATH="/usr/lib/fsl/5.0:${PATH}"
 
+## Install ANTs
+#ENV ANTSPATH /opt/ANTs
+#RUN mkdir -p /opt/ANTs && \
+#    curl -sSL "https://dl.dropbox.com/s/2f4sui1z6lcgyek/ANTs-Linux-centos5_x86_64-v2.2.0-0740f91.tar.gz" \
+#    | tar -xzC $ANTSPATH --strip-components 1
+#ENV PATH=${ANTSPATH}:${PATH}
+
 # Install ANTs
-ENV ANTSPATH /opt/ANTs
-RUN mkdir -p /opt/ANTs && \
-    curl -sSL "https://dl.dropbox.com/s/2f4sui1z6lcgyek/ANTs-Linux-centos5_x86_64-v2.2.0-0740f91.tar.gz" \
-    | tar -xzC $ANTSPATH --strip-components 1
-ENV PATH=${ANTSPATH}:${PATH}
+###   Install ANTs   ###
+# The following installs a given version of ANTs:
+# Specify where to install packages:
+ENV ANTS_FOLDER=/opt/ANTs
+# Grab the Github repository, checkout the needed version,
+#   build
+ARG ANTs_VERSION
+RUN cd /tmp && \
+    git clone https://github.com/ANTsX/ANTs.git && \
+    cd ANTs && \
+    git checkout ${ANTs_VERSION} && \
+    buildDir=${PWD}/build && \
+    mkdir -p $buildDir ${ANTS_FOLDER} && \
+    cd $buildDir && \
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=${ANTS_FOLDER} \
+        -DBUILD_SHARED_LIBS=OFF \
+    -DSuperBuild_ANTS_USE_GIT_PROTOCOL=OFF \
+        -DBUILD_TESTING=OFF \
+        -DRUN_LONG_TESTS=OFF \
+        -DRUN_SHORT_TESTS=OFF \
+        /tmp/ANTs 2>&1 | tee cmake.log && \
+    make 2>&1 | tee build.log && \
+    cd ${buildDir}/ANTS-build && \
+    make install 2>&1 | tee install.log && \
+    rm -r /tmp/ANTs
+
+# Add ANTs/bin to the path:
+ENV PATH=$ANTS_FOLDER/bin/:$PATH
+ENV ANTSPATH=$ANTS_FOLDER/bin/
 
 # Install all needed packages based on pip installation
 COPY requirements.txt ./
