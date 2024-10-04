@@ -38,10 +38,11 @@ ENV FSLDIR="/usr/share/fsl/5.0" \
 ENV PATH="/usr/lib/fsl/5.0:${PATH}"
 
 # Install ANTs
-ENV ANTSPATH /opt/ANTs
-RUN mkdir -p /opt/ANTs && \
-    curl -sSL "https://dl.dropbox.com/s/2f4sui1z6lcgyek/ANTs-Linux-centos5_x86_64-v2.2.0-0740f91.tar.gz" \
-    | tar -xzC $ANTSPATH --strip-components 1
+ENV ANTSPATH="/opt/ANTs"
+ENV ANTSTAR="/opt/ants.tar.gz"
+RUN mkdir -p "${ANTSPATH}" && \
+    wget -q --show-progress -O "${ANTSTAR}" https://huggingface.co/datasets/AICONSlab/icvmapper/resolve/dev/software/ANTs/ANTs-Linux-centos5_x86_64-v2.2.0-0740f91.tar.gz && \
+    tar -xzvf "${ANTSTAR}" -C "${ANTSPATH}" --strip-components 1
 ENV PATH=${ANTSPATH}:${PATH}
 
 # Install all needed packages based on pip installation
